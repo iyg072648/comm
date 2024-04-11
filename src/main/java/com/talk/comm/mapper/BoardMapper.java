@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public interface BoardMapper {
 
+    Board getBoard(int boardId);
+
     public int boardCount();
 
     public List<Board> getList();

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns xmlns:th="http://www.w3.org/1999/xhtml" : th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <p>글번호 : [[${halo.boardId}]]</p>
+        <p>제목 : [[${halo.title}]]</p>
+        <p>작성자 : [[${halo.name}]]</p>
+        내용 : <textarea class="form-control" th:text="${halo.content}"></textarea>
+        <p>조회수 : [[${halo.read}]]</p>
+    </div>    
+</body>
+</html>

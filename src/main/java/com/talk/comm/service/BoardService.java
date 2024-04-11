@@ -24,4 +24,8 @@ public class BoardService {
         return boardMapper.getList();
     }
 
+    public Board getBoard(int boardId){
+        return boardMapper.getBoard(boardId);
+    }
+
 }
