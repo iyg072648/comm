@@ -39,4 +39,15 @@ public class BoardService {
         return boardMapper.getBoard(boardId);
     }
 
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);
+    }
+
+    public BoardDTO findById(Long id) {
+        return boardRepository.findById(id);
+    }
+
+    public void update(BoardDTO boardDTO) {
+        boardRepository.update(boardDTO);
+    }
 }

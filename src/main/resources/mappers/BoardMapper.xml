@@ -12,6 +12,28 @@
         from board_table order by id desc
     </select>
 
+    <update id="updateHits" parameterType="Long">
+        update board_table
+        set boardHits = boardHits+1
+        where
+        id=#{id}
+    </update>
+    
+    <update id="update">
+        update board_table
+        set boardTitle=#{boardTitle}, boardContents=#{boardContents}
+        where
+        id = #{id}
+    </update>
+    
+    <select id="findById" parameterType="Long" resultType="com.talk.comm.dto.BoardDTO">
+        select id, boardTitle, boardWriter, boardPass, boardContents, boardHits,
+        date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createAt
+        from board_table
+        where
+        id = #{id}
+    </select>
+
     <select id="boardCount" resultType="int">
         SELECT count(boardId) AS cnt FROM tbl_board
     </select>

@@ -13,6 +13,7 @@
         }
     </style>
 <body>
+<a href="/">홈</a>
 <a href="/board/save">글쓰기</a>
 <table>
     <tr>
@@ -25,7 +26,7 @@
     <tr th:each="board: ${boardList}">
         <td th:text="${board.id}"></td>
         <td>
-            <a th:text="${board.boardTitle}" th:href="@{|/${board.id}|}"></a>
+            <a th:text="${board.boardTitle}" th:href="@{|/board/${board.id}|}"></a>
         </td>
         <td th:text="${board.boardWriter}"></td>
         <td th:text="${board.createdAt}"></td>
