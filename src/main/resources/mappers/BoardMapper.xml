@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.talk.comm.mapper.BoardMapper">
 
-    <insert id="save" parameterType="board">
+<mapper namespace="Board">
+    <insert id="save" parameterType="com.talk.comm.dto.BoardDTO">
         insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
             values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
+
+    <select id="findAll" resultType="com.talk.comm.dto.BoardDTO">
+        select id, boardTitle, boardWriter, boardHits, date_format(createdAt, "%Y-%m-%d") as createdAt
+        from board_table order by id desc
+    </select>
 
     <select id="boardCount" resultType="int">
         SELECT count(boardId) AS cnt FROM tbl_board

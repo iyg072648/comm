@@ -5,12 +5,10 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/comm
+    url: jdbc:mariadb://localhost:3306/board
     username: root
     password: 1q2w3e4r
 
 mybatis:
-  config-location:
-    - /mappers/mybatis-config.xml
   mapper-locations:
     - /mappers/*.xml

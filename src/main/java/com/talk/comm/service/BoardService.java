@@ -23,6 +23,10 @@ public class BoardService {
         boardRepository.save(boardDTO);
     }
 
+    public List<BoardDTO> findAll(){
+        return boardRepository.findAll();
+    }
+
     public int boardCount() {
         return boardMapper.boardCount();
     }

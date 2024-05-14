@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/board")
 @RequiredArgsConstructor
@@ -49,5 +51,13 @@ public class BoardController {
         System.out.println("boardDTO = " + boardDTO);
         service.save(boardDTO);
         return "home";
+    }
+
+    @GetMapping("/list")
+    public String findAll(Model model){
+        List<BoardDTO> boardDTOList = service.findAll();
+        model.addAttribute("boardList", boardDTOList);
+        System.out.println("boardDTOList = " + boardDTOList);
+        return "list";
     }
 }
