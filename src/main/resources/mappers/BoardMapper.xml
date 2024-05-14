@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Board">
-    <insert id="save" parameterType="com.talk.comm.dto.BoardDTO">
+    <insert id="save" parameterType="com.talk.comm.dto.BoardDTO" useGeneratedKeys="true" keyProperty="id">
         insert into board_table(boardTitle, boardWriter, boardPass, boardContents)
             values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents})
     </insert>
@@ -55,4 +55,9 @@
         *
         FROM tbl_board where boardId=#{boardId};
     </select>
+
+    <insert id="saveFile" parameterType="boardFile">
+        insert into board_file_table(orginalFileName, storeFileName, boardId)
+        values (#{orginalFileName}, #{storedFileName}, #{boardId})
+    </insert>
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -48,7 +49,7 @@ public class BoardController {
     }
 
     @PostMapping("/save")
-    public String save(BoardDTO boardDTO){
+    public String save(BoardDTO boardDTO) throws IOException {
         System.out.println("boardDTO = " + boardDTO);
         service.save(boardDTO);
         return "redirect:/board/list";
