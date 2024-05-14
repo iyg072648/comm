@@ -34,6 +34,14 @@
         id = #{id}
     </select>
 
+    <delete id="delete" parameterType="Long">
+        delete
+        from
+        board_table
+        where
+        id = #{id}
+    </delete>
+
     <select id="boardCount" resultType="int">
         SELECT count(boardId) AS cnt FROM tbl_board
     </select>
