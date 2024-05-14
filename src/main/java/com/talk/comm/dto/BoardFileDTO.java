@@ -10,6 +10,6 @@ import lombok.ToString;
 public class BoardFileDTO {
     private Long id;
     private Long boardId;
-    private String orginalFileName;
+    private String originalFileName;
     private String storedFileName;
 }

@@ -6,11 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/board/save" method="post">
+    <form action="/board/save" method="post" enctype="multipart/form-data">
         제목 : <input type="text" name="boardTitle"><br>
         작성자 : <input type="text" name="boardWriter"><br>
         비밀번호 : <input type="text" name="boardPass"><br>
         내용: <textarea name="boardContents" cols="30" rows="10"></textarea><br>
+        파일: <input type="file" name="boardFile" multiple>
         <input type="submit" value="작성">
     </form>
 </body>

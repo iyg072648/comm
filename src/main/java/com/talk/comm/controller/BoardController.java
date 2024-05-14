@@ -1,6 +1,7 @@
 package com.talk.comm.controller;
 
 import com.talk.comm.dto.BoardDTO;
+import com.talk.comm.dto.BoardFileDTO;
 import com.talk.comm.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -72,6 +73,10 @@ public class BoardController {
         BoardDTO boardDTO = service.findById(id);
         model.addAttribute("board", boardDTO);
         System.out.println("boardDTO = " + boardDTO);
+        if (boardDTO.getFileAttached() == 1){
+            List<BoardFileDTO> boardFileDTOList = service.findFile(id);
+            model.addAttribute("boardFileList", boardFileDTOList);
+        }
         return "detail";
     }
 
