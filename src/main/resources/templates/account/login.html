@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <main class="main-container">
+            <form action="/account/login" method="post">
+                <h1>로그인</h1>
+                <div class="login-group">
+                    <label for="login-username">사용자이름</label>
+                    <input type="text" id="login-username" class="login-inputs" name="username" required>
+                </div>
+                <div class="login-group">
+                    <label for="login-password">비밀번호</label>
+                    <input type="text" id="login-password" class="login-inputs" name="username" required>
+                </div>
+                <div class="login-error">
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="login-submit">로그인</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
