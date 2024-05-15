@@ -40,20 +40,6 @@
         id = #{id}
     </delete>
 
-    <select id="boardCount" resultType="int">
-        SELECT count(boardId) AS cnt FROM tbl_board
-    </select>
-    <select id="getList" resultType="com.talk.comm.domain.Board">
-        SELECT
-        *
-        FROM tbl_board
-    </select>
-    <select id="getBoard" parameterType="int" resultType="com.talk.comm.domain.Board">
-        SELECT
-        *
-        FROM tbl_board where boardId=#{boardId};
-    </select>
-
     <insert id="saveFile" parameterType="com.talk.comm.dto.BoardFileDTO">
         insert into board_file_table(originalFileName, storedFileName, boardId)
         values (#{originalFileName}, #{storedFileName}, #{boardId})
