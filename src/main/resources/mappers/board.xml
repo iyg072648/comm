@@ -46,6 +46,10 @@
     </insert>
 
     <select id="findFile" parameterType="Long" resultType="com.talk.comm.dto.BoardFileDTO">
-        select * from board_file_table where boardId = #{id}
+        select *
+        from
+        board_file_table
+        where
+        boardId = #{id}
     </select>
 </mapper>
