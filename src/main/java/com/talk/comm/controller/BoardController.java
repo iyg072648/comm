@@ -1,15 +1,14 @@
 package com.talk.comm.controller;
 
+import com.talk.comm.domain.comment.CommentRequest;
+import com.talk.comm.domain.comment.CommentResponse;
 import com.talk.comm.dto.BoardDTO;
 import com.talk.comm.dto.BoardFileDTO;
 import com.talk.comm.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -77,4 +76,11 @@ public class BoardController {
         service.delete(id);
         return "redirect:/board/list";
     }
+
+    //신규 댓글 생성
+//    @PostMapping("/{id}/comments")
+//    public CommentResponse saveComment(@PathVariable final Long boardId, @RequestBody final CommentRequest params){
+//        Long id = commentService.saveComment(params);
+//        return commentService.findCommentById(id);
+//    }
 }

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>detail</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="/static/js/comment.js"></script>
     <style>
         table, tr, td, th {
             border: 1px solid black;
@@ -49,8 +51,58 @@
 <button onclick="listReq()">목록</button>
 <button onclick="updateReq()">수정</button>
 <button onclick="deleteReq()">삭제</button>
+
+<!--/* 댓글 작성 */-->
+<div class="cm_write">
+    <fieldset>
+        <legend class="skipinfo">댓글 입력</legend>
+        <div class="cm_input">
+            <p><textarea id="content" name="content" onkeyup="countingLength(this);" cols="90" rows="4" placeholder="댓글을 입력해 주세요."></textarea></p>
+            <span><button type="button" class="btns" onclick="saveComment();">등 록</button> <i id="counter">0/300자</i></span>
+        </div>
+    </fieldset>
+</div>
+
+<!-- 댓글 작성
+
+<div id="comment-writer">
+    <input type="text" id="commentWriter" placeholder="작성자">
+    <input type="text" id="commentContents" placeholder="내용">
+    <button id="comment-writer-btn" onclick="commentWriter()">댓글작성</button>
+</div>
+
+댓글 출력
+
+<div id="comment-list">
+
+</div> -->
+
 </body>
 <script th:inline="javascript">
+
+    // const commentWriter = () => {
+    //     const writer = document.getElementById("commentWriter").value;
+    //     const contents = document.getElementById("commentContents").value;
+    //     console.log("작성자", writer);
+    //     console.log("내용", contents);
+
+    //     $.ajax({
+    //         type: "post",
+    //         url: "/comment/save",
+    //         data: {
+    //             "commentWriter": writer,
+    //             "commentContents": contents,
+    //             "boardId": id
+    //         },
+    //         success: function(res){
+    //             console.log("요청 성공", res);
+    //         },
+    //         error: function(err){
+    //             console.log("요청 실패", err);
+    //         }
+    //     })
+    // }
+
     const listReq = () => { 
         location.href = "/board/list";
     }
