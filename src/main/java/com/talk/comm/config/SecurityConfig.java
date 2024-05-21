@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception{
+    public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.httpBasic().disable();
         http.authorizeRequests()
-                .antMatchers("/mypage/**", "/board/**", "/security/**")
+                .antMatchers("/mypage/**", "/security/**")
                 .authenticated()
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")
