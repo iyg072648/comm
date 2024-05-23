@@ -3,49 +3,95 @@
 
 <mapper namespace="Board">
     <insert id="save" parameterType="com.talk.comm.dto.BoardDTO" useGeneratedKeys="true" keyProperty="id">
-        insert into board_table(boardTitle, boardWriter, boardPass, boardContents, fileAttached)
-        values(#{boardTitle}, #{boardWriter}, #{boardPass}, #{boardContents}, #{fileAttached})
+        insert into
+        board_table(
+            boardTitle,
+            boardWriter,
+            boardPass,
+            boardContents,
+            fileAttached)
+        values (
+            #{boardTitle},
+            #{boardWriter},
+            #{boardPass},
+            #{boardContents},
+            #{fileAttached}
+        )
     </insert>
 
     <select id="findAll" resultType="com.talk.comm.dto.BoardDTO">
-        select id, boardTitle, boardWriter, boardHits, date_format(createdAt, "%Y-%m-%d") as createdAt
-        from board_table order by id desc
+        select
+            id,
+            boardTitle,
+            boardWriter,
+            boardHits,
+            date_format (createdAt, "%Y-%m-%d") as createdAt
+        from
+            board_table
+            order by id desc
     </select>
 
     <update id="updateHits" parameterType="Long">
-        update board_table
-        set boardHits = boardHits+1
+        update
+            board_table
+        set
+            boardHits = boardHits+1
         where
-        id=#{id}
+            id=#{id}
     </update>
     
     <update id="update">
-        update board_table
-        set boardTitle=#{boardTitle}, boardContents=#{boardContents}
+        update
+            board_table
+        set
+            boardTitle=#{boardTitle},
+            boardContents=#{boardContents}
         where
-        id = #{id}
+            id = #{id}
     </update>
     
     <select id="findById" parameterType="Long" resultType="com.talk.comm.dto.BoardDTO">
-        select id, boardTitle, boardWriter, boardPass, boardContents, boardHits,
-        date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createdAt, fileAttached
-        from board_table where id=#{id}
+        select
+            id,
+            boardTitle,
+            boardWriter,
+            boardPass,
+            boardContents,
+            boardHits,
+            date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createdAt,
+            fileAttached
+        from
+            board_table
+        where
+            id=#{id}
     </select>
 
     <delete id="delete" parameterType="Long">
         delete
         from
-        board_table
+            board_table
         where
-        id = #{id}
+            id = #{id}
     </delete>
 
     <insert id="saveFile" parameterType="com.talk.comm.dto.BoardFileDTO">
-        insert into board_file_table(originalFileName, storedFileName, boardId)
-        values (#{originalFileName}, #{storedFileName}, #{boardId})
+        insert into
+            board_file_table(
+            originalFileName,
+            storedFileName,
+            boardId)
+        values (
+            #{originalFileName},
+            #{storedFileName},
+            #{boardId})
     </insert>
 
     <select id="findFile" parameterType="Long" resultType="com.talk.comm.dto.BoardFileDTO">
-        select * from board_file_table where boardId = #{id}
+        select *
+        from
+            board_file_table
+        where
+            boardId = #{id}
     </select>
+
 </mapper>

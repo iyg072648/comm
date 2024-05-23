@@ -5,5 +5,7 @@
     <typeAliases>
         <typeAlias type="com.talk.comm.dto.BoardDTO" alias="board"></typeAlias>
         <typeAlias type="com.talk.comm.dto.BoardFileDTO" alias="boardfile"></typeAlias>
+
+        <typeAlias type="com.talk.comm.dto.CommentDTO" alias="comment"></typeAlias>
     </typeAliases>
 </configuration>
