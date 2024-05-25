@@ -67,6 +67,7 @@
             <td th:text="${comment.createdAt}"></td>
         </tr>
     </table>
+    <button onclick="deletecomment()">삭제</button>
 </div>
 </body>
 <script th:inline="javascript">
@@ -78,6 +79,9 @@
     }
     const deleteReq = () => {
         location.href = `/board/delete/[[${board.id}]]`;
+    }
+    const deletecomment = () => {
+        location.href = `/comment/delete/[[${comment.id}]]`;
     }
 </script>
 </html>

@@ -17,8 +17,15 @@
         select *
         from
             comment
-        <where></where>
             boardId = #{boardId}
         order by id desc
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="com.talk.comm.dto.CommentDTO">
+        select *
+        from
+            comment
+        where
+            id = #{id}
     </select>
 </mapper>
