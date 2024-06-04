@@ -53,21 +53,24 @@
 <div id="comment-list">
     <table>
         <tr>
-            <th>댓글번호</th>
+            <th>댓글 번호</th>
             <th>작성자</th>
-            <th>내용</th>
+            <th>댓글</th>
             <th>작성시간</th>
         </tr>
         <tr th:each="comment: ${commentList}">
             <td th:text="${comment.id}"></td>
+            <td th:text="${comment.commnetWriter}"></td>
             <td>
                 <a th:text="${comment.commentContents}" th:href="@{|/comment/${comment.id}|}"></a>
             </td>
-            <td th:text="${comment.boardWriter}"></td>
-            <td th:text="${comment.createdAt}"></td>
         </tr>
     </table>
-    <button onclick="deletecomment()">삭제</button>
+    <!-- <button onclick="deletecomment()">삭제</button> -->
+    <form action="/comment/save" method="post">
+        작성자 : <input type="text" name="commnetWriter">
+        댓글 : <textarea name="commentContents" cols="30" rows="2"></textarea><input type="submit" value="작성">
+    </form>
 </div>
 </body>
 <script th:inline="javascript">
@@ -79,9 +82,6 @@
     }
     const deleteReq = () => {
         location.href = `/board/delete/[[${board.id}]]`;
-    }
-    const deletecomment = () => {
-        location.href = `/comment/delete/[[${comment.id}]]`;
     }
 </script>
 </html>

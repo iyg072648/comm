@@ -15,7 +15,7 @@ public class CommentDTO {
     private Long boardId;
     private String commentWriter;
     private String commentContents;
-    private LocalDateTime createdAt;
+    private String createdAt;
     private Boolean deleteYn;
 
 }

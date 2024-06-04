@@ -77,4 +77,5 @@ public class BoardController {
         service.delete(id);
         return "redirect:/board/list";
     }
+
 }
