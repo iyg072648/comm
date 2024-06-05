@@ -14,64 +14,64 @@
     </style>
 </head>
 <body>
-<table>
-    <tr>
-        <th>id</th>
-        <td th:text="${board.id}"></td>
-    </tr>
-    <tr>
-        <th>title</th>
-        <td th:text="${board.boardTitle}"></td>
-    </tr>
-    <tr>
-        <th>writer</th>
-        <td th:text="${board.boardWriter}"></td>
-    </tr>
-    <tr>
-        <th>date</th>
-        <td th:text="${board.createdAt}"></td>
-    </tr>
-    <tr>
-        <th>hits</th>
-        <td th:text="${board.boardHits}"></td>
-    </tr>
-    <tr>
-        <th>contents</th>
-        <td th:text="${board.boardContents}"></td>
-    </tr>
-    <tr th:if="${board.fileAttached == 1}">
-        <th>image</th>
-        <td th:each="boardFile: ${boardFileList}">
-            <img th:src="@{|/upload/${boardFile.storedFileName}|}" alt="" width="200" height="200">
-        </td>
-    </tr>
-</table>
-<button onclick="listReq()">목록</button>
-<button onclick="updateReq()">수정</button>
-<button onclick="deleteReq()">삭제</button>
-
-<div id="comment-list">
     <table>
         <tr>
-            <th>댓글 번호</th>
-            <th>작성자</th>
-            <th>댓글</th>
-            <th>작성시간</th>
+            <th>id</th>
+            <td th:text="${board.id}"></td>
         </tr>
-        <tr th:each="comment: ${commentList}">
-            <td th:text="${comment.id}"></td>
-            <td th:text="${comment.commnetWriter}"></td>
-            <td>
-                <a th:text="${comment.commentContents}" th:href="@{|/comment/${comment.id}|}"></a>
+        <tr>
+            <th>title</th>
+            <td th:text="${board.boardTitle}"></td>
+        </tr>
+        <tr>
+            <th>writer</th>
+            <td th:text="${board.boardWriter}"></td>
+        </tr>
+        <tr>
+            <th>date</th>
+            <td th:text="${board.createdAt}"></td>
+        </tr>
+        <tr>
+            <th>hits</th>
+            <td th:text="${board.boardHits}"></td>
+        </tr>
+        <tr>
+            <th>contents</th>
+            <td th:text="${board.boardContents}"></td>
+        </tr>
+        <tr th:if="${board.fileAttached == 1}">
+            <th>image</th>
+            <td th:each="boardFile: ${boardFileList}">
+                <img th:src="@{|/upload/${boardFile.storedFileName}|}" alt="" width="200" height="200">
             </td>
         </tr>
     </table>
-    <!-- <button onclick="deletecomment()">삭제</button> -->
-    <form action="/comment/save" method="post">
-        작성자 : <input type="text" name="commnetWriter">
-        댓글 : <textarea name="commentContents" cols="30" rows="2"></textarea><input type="submit" value="작성">
-    </form>
-</div>
+    <button onclick="listReq()">목록</button>
+    <button onclick="updateReq()">수정</button>
+    <button onclick="deleteReq()">삭제</button>
+
+    <div id="comment-list">
+        <table>
+            <tr>
+                <th>댓글 번호</th>
+                <th>작성자</th>
+                <th>댓글</th>
+                <th>작성시간</th>
+            </tr>
+            <tr th:each="comment: ${commentList}">
+                <td th:text="${comment.id}"></td>
+                <td th:text="${comment.commentWriter}"></td>
+                <td>
+                    <a th:text="${comment.commentContents}" th:href="@{|/comment/${comment.id}|}"></a>
+                </td>
+            </tr>
+        </table>
+        <!-- <button onclick="deletecomment()">삭제</button> -->
+        <form action="/comment/save" method="post">
+            작성자 : <input type="text" name="commentWriter">
+            댓글 : <textarea name="commentContents" cols="30" rows="2"></textarea><input type="submit" value="작성">
+        </form>
+    </div>
 </body>
 <script th:inline="javascript">
     const listReq = () => { 

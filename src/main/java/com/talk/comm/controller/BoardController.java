@@ -2,7 +2,9 @@ package com.talk.comm.controller;
 
 import com.talk.comm.dto.BoardDTO;
 import com.talk.comm.dto.BoardFileDTO;
+import com.talk.comm.dto.CommentDTO;
 import com.talk.comm.service.BoardService;
+import com.talk.comm.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService service;
+    private final CommentService commentService;
 
     @GetMapping("/save")
     public String save(){
@@ -53,6 +56,10 @@ public class BoardController {
         if (boardDTO.getFileAttached() == 1){
             List<BoardFileDTO> boardFileDTOList = service.findFile(id);
             model.addAttribute("boardFileList", boardFileDTOList);
+        }
+        if (boardDTO.getCommentAttached() == 1){
+            List<CommentDTO> commentDTOList = service.findCommnet(id);
+            model.addAttribute("commentList", commentDTOList);
         }
         return "detail";
     }

@@ -26,4 +26,8 @@ public class CommentRepository {
         return sql.selectOne("Comment.findById", id);
     }
 
+    public List<CommentDTO> findComment(Long id){
+        return sql.selectList("Comment.findComment", id);
+    }
+
 }

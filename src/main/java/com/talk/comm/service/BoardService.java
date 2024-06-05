@@ -2,7 +2,9 @@ package com.talk.comm.service;
 
 import com.talk.comm.dto.BoardDTO;
 import com.talk.comm.dto.BoardFileDTO;
+import com.talk.comm.dto.CommentDTO;
 import com.talk.comm.repository.BoardRepository;
+import com.talk.comm.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,7 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final CommentRepository commentRepository;
 
     public void save(BoardDTO boardDTO) throws IOException {
         if (boardDTO.getBoardFile().get(0).isEmpty()){
@@ -75,5 +78,9 @@ public class BoardService {
 
     public List<BoardFileDTO> findFile(Long id) {
         return boardRepository.findFile(id);
+    }
+
+    public List<CommentDTO> findCommnet(Long id){
+        return commentRepository.findComment(id);
     }
 }

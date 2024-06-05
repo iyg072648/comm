@@ -8,10 +8,11 @@
             commentWriter,
             commentContents,
             boardId)
-        values(
+        values (
             #{commentWriter},
             #{commentContents},
-            #{boardId})
+            #{boardId}
+        )
     </insert>
     
     <select id="findAll" parameterType="Long" resultType="com.talk.comm.dto.CommentDTO">
@@ -19,7 +20,7 @@
         from
             comment
             boardId = #{boardId}
-        order by id desc
+            order by id desc
     </select>
 
     <select id="findById" parameterType="Long" resultType="com.talk.comm.dto.CommentDTO">
